@@ -8,7 +8,7 @@ import { College } from '../models/add ons/college.model';
 })
 export class CollegeService {
 
-  readonly collegeURL = "https://hrdmocompetencyapp.azurewebsites.net/api/college/";
+  readonly collegeURL = "https://localhost:7198/api/college/";
 
   college: College = {
     id: '',
