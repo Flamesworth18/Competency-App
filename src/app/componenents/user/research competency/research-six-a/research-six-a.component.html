@@ -1,0 +1,120 @@
+<div class="container py-5 h-100 row d-flex justify-content-center mx-auto">
+
+    <div class="col-xl-7">
+
+        <!-- title -->
+        <div class="shadow card mx-auto">
+            <div class="card-header bg-success text-light h3">
+                Research Competency 6
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Demonstrating responsible conduct of research</h5>
+                <span class="pre pt-2 ps-2" style="font-size: 13px">
+                    6.1 Responsible data ownership and sharing.
+                </span>
+                <span class="pre ps-2" style="font-size: 13px">
+                    6.2 Publishing with responsible authorship.
+                </span>
+                <span class="pre ps-2" style="font-size: 13px">
+                    6.3 Identifying and mitigating research misconduct.
+                </span>
+                <span class="pre ps-2" style="font-size: 13px">
+                    6.4 Identifying and disclosing conflict of interest.
+                </span>
+            </div>
+        </div>
+
+        <!-- basic -->
+        <div class="shadow card mt-3 mx-auto ">
+            <div class="card-body">
+                <h5 class="card-title pb-3">
+                    <span class="h5 me-1">Basic</span> 
+                    <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                </h5>
+                <div class="form-check pb-3" *ngFor="let option of userResearchCompetency.sixBasicOptions">
+                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" (change)="addToBasicOptionList($event, option)" id="option1">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        {{ option.label }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- intermediate -->
+        <div class="shadow card mt-3 mx-auto ">
+            <div class="card-body">
+                <h5 class="card-title pb-3">
+                    <span class="h5 me-1">Intermediate</span> 
+                    <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                </h5>
+                <div class="form-check pb-3" *ngFor="let option of userResearchCompetency.sixIntermediateOptions">
+                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" (change)="addToIntermediateOptionList($event, option)" id="option1">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        {{ option.label }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- advanced -->
+        <div class="shadow card mt-3 mx-auto ">
+            <div class="card-body">
+                <h5 class="card-title pb-3">
+                    <span class="h5 me-1">Advanced</span> 
+                    <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                </h5>
+                <div class="form-check pb-3" *ngFor="let option of userResearchCompetency.sixAdvancedOptions">
+                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" (change)="addToAdvancedOptionList($event, option)" id="option1">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        {{ option.label }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Superior -->
+        <div class="shadow card mt-3 mx-auto ">
+            <div class="card-body">
+                <h5 class="card-title pb-3">
+                    <span class="h5 me-1">Superior</span> 
+                    <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                </h5>
+                <div class="form-check pb-3" *ngFor="let option of userResearchCompetency.sixSuperiorOptions">
+                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" (change)="addToSuperiorOptionList($event, option)" id="option1">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        {{ option.label }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- pagination -->
+        <div class="mt-5 mx-auto">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li *ngFor="let route of researchCompetencyRoutes; let i = index" [ngClass]="isPageActive(route.routeLink)?'active':''" class="page-item">
+                        <a class="page-link" (click)="navigateToPagination(route.routeLink )">{{ i + 1 }}</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        
+    </div>
+
+    <div class="col-xl-2">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+              Competencies
+            </div>
+            <ul class="list-group list-group-flush" *ngFor="let competency of competencies">
+              <li class="list-group-item" [ngClass]="competency.name === currentCompetency? 'active':''" 
+              (click)="confirmNavigate(competency.name)">
+                {{ competency.name }}
+              </li>
+            </ul>
+        </div>
+
+        <button type="button" (click)="navigateToTakenAssessments()" class="shadow btn btn-outline-success w-100 mt-3">My Assessments</button>
+    </div>
+
+</div>

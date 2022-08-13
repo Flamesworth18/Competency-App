@@ -1,0 +1,55 @@
+<div class="h-100 container py-4">
+    <div class="h2 text-center">WELCOME USER!</div>
+    <div class="h6 text-center mb-5">HRDMO Competency System</div>
+
+    <div class="mb-3" fxLayout="row" fxLayoutAlign="space-between center" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px">
+        <mat-card fxFlex>
+            <span class="label">Core Competency</span>
+            <div class="d-flex align-items-center">
+                <span class="display-4"><i class="fa-solid fa-square-caret-up"></i></span>
+                <span class="count ms-3">{{ count.coreCount }}</span>
+            </div>
+        </mat-card>
+        <mat-card fxFlex>
+            <span class="label">Leadership Competency</span>
+            <div class="d-flex align-items-center">
+                <span class="display-4"><i class="fa-solid fa-square-caret-up"></i></span>
+                <span class="count ms-3">{{ count.leadershipCount }}</span>
+            </div>
+        </mat-card>
+        <mat-card fxFlex>
+            <span class="label">Instruction Competency</span>
+            <div class="d-flex align-items-center">
+                <span class="display-4"><i class="fa-solid fa-square-caret-up"></i></span>
+                <span class="count ms-3">{{ count.instructionCount }}</span>
+            </div>
+        </mat-card>
+    </div>
+    <div class="mb-xl-5" fxLayout="row" fxLayoutAlign="space-between center" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px">
+        <mat-card fxFlex class="mb-xl-5">
+            <span class="label">Research Competency</span>
+            <div class="d-flex align-items-center">
+                <span class="display-4"><i class="fa-solid fa-square-caret-up"></i></span>
+                <span class="count ms-3">{{ count.researchCount }}</span>
+            </div>
+        </mat-card>
+        <mat-card fxFlex class="mb-xl-5">
+            <span class="label">Extension Competency</span>
+            <div class="d-flex align-items-center">
+                <span class="display-4"><i class="fa-solid fa-square-caret-up"></i></span>
+                <span class="count ms-3">{{ count.extensionCount }}</span>
+            </div>
+        </mat-card>
+        <mat-card fxFlex class="mb-xl-5">
+            <span class="label">Production Competency</span>
+            <div class="d-flex align-items-center">
+                <span class="display-4"><i class="fa-solid fa-square-caret-up"></i></span>
+                <span class="count ms-3">{{ count.productionCount }}</span>
+            </div>
+        </mat-card>
+    </div>
+
+</div>
+
+
+

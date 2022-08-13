@@ -1,0 +1,45 @@
+<div class="container py-5 h-100 row d-flex justify-content-center mx-auto">
+
+        <div class="col-xl-7">
+            <div *ngIf="currentCompetency === 'Core'">
+              <app-core></app-core>
+            </div>
+            <div *ngIf="currentCompetency === 'Leadership'">
+              <app-leadership></app-leadership>
+            </div>
+            <div *ngIf="currentCompetency === 'Instruction'">
+              <app-instruction></app-instruction>
+            </div>
+            <div *ngIf="currentCompetency === 'Research'">
+              <app-research></app-research>
+            </div>
+            <div *ngIf="currentCompetency === 'Extension'">
+              <app-extension></app-extension>
+            </div>
+            <div *ngIf="currentCompetency === 'Production'">
+              <app-production></app-production>
+            </div>
+        </div>
+        
+
+        <div class="col-xl-2">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                  Competencies
+                </div>
+                <ul class="list-group list-group-flush" *ngFor="let competency of competencies">
+                  <li class="list-group-item" [ngClass]="competency.name === currentCompetency? 'active':''" 
+                  (click)="selectedCompetency(competency.name)">
+                    {{ competency.name }}
+                  </li>
+                </ul>
+            </div>
+
+            <button type="button" (click)="navigateToTakenAssessments()" class="btn btn-outline-success w-100 mt-3">My Assessments</button>
+        </div>
+     
+</div>
+
+
+                
+                

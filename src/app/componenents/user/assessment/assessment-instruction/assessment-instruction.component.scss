@@ -1,0 +1,28 @@
+.card{
+    text-align: justify;
+}
+
+li{
+    cursor: pointer;
+}
+
+.list-group > li:focus,
+.list-group > li:hover
+{
+    color: lightgreen;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.list-group > .active
+{
+    color: white;
+    background-color: green !Important;
+    border: solid 1px green !Important;
+}
+
+.list-group > .active:hover
+{
+    background-color: green !Important;
+    border: solid 1px green;
+}

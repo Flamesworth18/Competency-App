@@ -1,0 +1,197 @@
+<section class="pb-5 h-100">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-sm-10 col-md-8 col-lg-10 col-xl-10">
+          <form class="d-flex row" [formGroup]="registerForm" (ngSubmit)="registerSubmitted()">
+            <div class="text-center">
+              <p class="h1 fw-normal mt-5 mb-0 me-3">Welcome to <b style="color: #29bf12">Competency</b></p>
+            </div>
+  
+            <div class="divider d-flex align-items-center my-4">
+              <p class="text-center lead mx-3 mb-0">REGISTER</p>
+            </div>
+
+            <div class="col-md-12 col-lg-6 col-xl-6">
+                <div class="d-flex flex-wrap flex-xl-nowrap">
+                  <!-- First Name input -->
+                  <div class="form-outline mb-2 col-12 col-xl-10 me-1">
+                      <div class="m-100">
+                          <label class="col-3 form-label" for="form3Example3">First Name</label>
+                          <label class="col-9 error text-end" *ngIf="FirstName.errors?.['required'] && (FirstName.dirty)">
+                            First name is required!
+                          </label>
+                      </div>   
+                      <input class="form-control form-control-lg" 
+                      id="firstName" 
+                      type="text" 
+                      formControlName="firstName" 
+                      placeholder="Enter your first name" 
+                      maxlength="16" required/>
+                  </div>
+
+                  <!-- Middle Name input -->
+                  <div class="form-outline mb-2 col-12 col-xl-2 ">
+                    <div class="m-100">
+                        <label class="form-label text-nowrap" for="form3Example3">Middle Name</label>
+                    </div>   
+                    <input class="form-control form-control-lg" 
+                    id="middleName" 
+                    type="text" 
+                    formControlName="middleName" 
+                    placeholder="M" 
+                    maxlength="1"/>
+                </div>
+                </div>
+
+                <!-- Last Name input -->
+                <div class="form-outline mb-2">
+                    <div class="m-100">
+                        <label class="col-3 form-label" for="form3Example3">Last Name</label>
+                        <label class="col-9 error text-end" *ngIf="LastName.errors?.['required'] && (LastName.dirty)">
+                          Last name is required!
+                        </label>
+                    </div>   
+                    <input class="form-control form-control-lg" 
+                    id="lastName" 
+                    type="text" 
+                    formControlName="lastName" 
+                    placeholder="Enter your last name" 
+                    maxlength="16" required/>
+                </div>
+    
+                <!-- Department input -->
+                <div class="form-outline mb-2">
+                    <div class="m-100">
+                        <label class="col-3 form-label" for="form3Example3">Department</label>
+                        <label class="col-9 error text-end" *ngIf="departmentIsEmpty() && Department.errors?.['required']">
+                            Department is required!
+                        </label>
+                    </div>
+                    <!-- <div *ngIf="departmentIsEmpty()">
+                      <label class="dropdown-label">Select your department</label>
+                    </div> -->
+                    <select (change)="selectedDepartment($any($event).target.value)" class="form-select form-select-lg" id="department" formControlName="department" required>
+                      <option [value]="null" selected disabled>Select Department</option>
+                      <option [value]="department.name" *ngFor="let department of departments">{{ department.name }}</option>
+                    </select>
+                </div>
+    
+                <!-- College input -->
+                <div class="form-outline mb-2">
+                    <div class="m-100">
+                        <label class="col-3 form-label" for="form3Example3">College</label>
+                        <label class="col-9 error text-end" *ngIf="collegeIsEmpty() && College.errors?.['required']">
+                            College is required!
+                        </label>
+                    </div>
+                    <!-- <div *ngIf="collegeIsEmpty()">
+                      <label class="dropdown-label">Select your college</label>
+                    </div> -->
+                    <select class="form-select form-select-lg" id="college" formControlName="college" required>
+                      <option [value]="null" selected disabled>Select College</option>
+                      <option [value]="college.name" *ngFor="let college of colleges">{{ college.name }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-lg-6 col-xl-6">
+                <!-- Email Address input -->
+                <div class="form-outline mb-2">
+                    <div class="m-100">
+                        <label class="col-4 form-label" for="form3Example3">Email Address</label>
+                        <label class="col-8 error text-end" *ngIf="Email.errors?.['required'] && (Email.dirty)">
+                          Email is required!
+                        </label>
+                        <label class="col-8 error text-end" *ngIf="Email.errors?.['email'] && (Email.dirty)">
+                          Email is Invalid!
+                        </label>
+                    </div>   
+                    <input class="form-control form-control-lg" 
+                    id="email" 
+                    type="text" 
+                    formControlName="email" 
+                    placeholder="Enter your email" required/>
+                </div>
+
+                <!-- Username input -->
+                <div class="form-outline mb-2">
+                    <div class="m-100">
+                        <label class="col-3 form-label" for="form3Example3">Username</label>
+                        <label class="col-9 error text-end" *ngIf="Username.errors?.['required'] && (Username.dirty)">
+                          Username is required!
+                        </label>
+                        <label class="col-9 error text-end" *ngIf="Username.errors?.['minlength'] && (Username.dirty)">
+                            Username should be at least 6 characters!
+                        </label>
+                    </div>   
+                    <input class="form-control form-control-lg" 
+                    id="username" 
+                    type="text" 
+                    formControlName="username" 
+                    placeholder="Enter your username" 
+                    maxlength="16" required/>
+                </div>
+    
+                <!-- Password input -->
+                <div class="form-outline mb-2">
+                    <div class="m-100">
+                        <label class="col-3 form-label" for="form3Example3">Password</label>
+                        <label class="col-9 error text-end" *ngIf="Password.errors?.['required'] && (Password.dirty)">
+                            Password is required!
+                        </label>
+                        <label class="col-9 error text-end" *ngIf="Password.errors?.['minlength'] && (Password.dirty)">
+                            Password should be at least 6 characters!
+                        </label>
+                    </div>   
+                    <input class="form-control form-control-lg" 
+                    id="password" 
+                    type="password" 
+                    formControlName="password" 
+                    placeholder="Enter your password" 
+                    maxlength="16" required/>
+                </div>
+    
+                <!-- Confirm Password input -->
+                <div class="form-outline mb-2">
+                    <div class="m-100">
+                        <label class="col-4 form-label" for="form3Example3">Confirm Password</label>
+                        <!-- <label class="col-8 error text-end" *ngIf="ConfirmPassword.errors?.['required'] && (ConfirmPassword.dirty)">
+                            Confirm Password is required!
+                        </label>
+                        <label class="col-8 error text-end" *ngIf="ConfirmPassword.errors?.['minlength'] && (ConfirmPassword.dirty)">
+                            Confirm Password should be at least 6 characters!
+                        </label> -->
+                        <label class="col-8 error text-end" *ngIf="confirmPassword() && (ConfirmPassword.dirty)">
+                            Confirm Password and Password must match!
+                        </label>
+                    </div>   
+                    <input class="form-control form-control-lg" id="confirmPassword" 
+                    type="password" 
+                    formControlName="confirmPassword" 
+                    placeholder="Confirm your password" 
+                    maxlength="16" required/>
+                </div>
+            </div>
+  
+            <div class="d-flex justify-content-between align-items-center">
+              <!-- Checkbox -->
+              <div class="form-check mt-3 mb-0">
+                <input class="form-check-input me-2" type="checkbox" value="{{ termsAccepted }}" (click)="acceptTerms()"/>
+                <label class="form-check-label" for="form2Example3">
+                  I agree to the terms & conditions.
+                </label>
+              </div>
+            </div>
+  
+            <div class="text-center text-lg-start mt-3 pt-2">
+              <button [disabled]="registerForm.invalid" type="submit" class="btn btn-success btn-lg w-100"
+                style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
+              <p class="text-center small fw-bold mt-2 pt-1 mb-0">Already have an account? <a href="/login"
+                  class="login">Login</a></p>
+            </div>
+  
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>

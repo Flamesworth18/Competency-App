@@ -1,0 +1,70 @@
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+.error{
+    color: red;
+}
+.dropdown-label{
+    position: absolute;
+    font-size: 15px;
+    opacity: .7;
+    margin-top: .5rem;
+    margin-left: 1rem;
+    font-weight: 400;
+    font-size: 19px;
+    z-index: 0;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.dropdown-icon{
+    position: absolute;
+    font-size: 15px;
+    opacity: .7;
+    margin-top: .5rem;
+    right: 0;
+    font-weight: 400;
+    font-size: 19px;
+    z-index: 0;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    i{
+        
+    }
+
+}
+
+
+.login{
+    text-decoration: none;
+    cursor: pointer;
+    color: rgba(255, 0, 0, 0.681)
+}
+
+.login:hover{
+    color: red;
+    text-decoration: underline;
+}

@@ -1,0 +1,45 @@
+.loader-container{
+    position: fixed;
+    width: 100%;
+    background: black;
+    opacity: .8;
+    z-index: 99;
+    
+
+    ::ng-deep .mat-progress-bar-fill::after {
+        background-color: #1E457C;
+    }
+    
+    ::ng-deep .mat-progress-bar-buffer {
+        background: #E4E8EB;
+    }
+    
+    ::ng-deep .mat-progress-bar {
+        border-radius: 2px;
+    }
+}
+.body{
+    width: 100%;
+    z-index: 0;
+    position: relative;
+    background: #e1eedf;
+}
+
+
+// @media (max-width: 990px) and (min-width: 421px){
+//     .body {
+//         height: 1200px;
+//     }
+// }
+
+// @media (max-width: 420px){
+//     .body {
+//         height: 900px;
+//     }
+// }
+
+// @media (min-width: 1200px){
+//     .body {
+//         height: 100%;
+//     }
+// }

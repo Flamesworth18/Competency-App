@@ -1,0 +1,66 @@
+<!-- title -->
+<div class="shadow card">
+    <div class="card-header bg-success text-light h3">
+        USM Faculty Competency Assessment
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Instructions</h5>
+        <p class="card-text text-muted p p-3">
+            On this Competency Assessment Booklet, you will find the Competency Standards of the Faculty Members of the University of Southern Mindanao.
+            As a faculty member, you will be assessed on the six (6) competency clusters: <i>Core, Leadership, Instruction, Research, Extension and Prodcution.</i>
+            You are to assess your level of competency according to BIAS assessment: <b>Basic, Intermediate, Advanced, and Superior</b>.
+            Read carefully the behavioral indicators described in the BIAS matrix. Assess yourself which level your current competencies are.
+            On the self-assessment page, please indicate your competency. After ascertaining your competency level, please describe an event where you have demonstrated
+            your competencies (2016 - 2020 period). Please indicate also when the event happened. We suggest you follow the <i>STAR</i> guideline in responding
+            to the essay on evidence: Describe a <b>SITUATION</b> where you needed to demonstrate the competency. In what capacity or what <b>TASKS</b>
+            you performed it? What were your <b>ACTIONS</b>? What were the <b>RESULTS</b>? This form should be printed and sent to HRMDO.
+        </p>
+    </div>
+</div>
+
+<!-- fullname -->
+<div class="shadow card mt-3">
+    <div class="card-body">
+        <h5 class="card-title pb-3">
+            <span class="h5 me-1">Full Name</span> 
+            <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+        </h5>
+        <input type="text" class="form-control no-border w-50" placeholder="Type here..."
+        value="{{ fullName }}">
+    </div>
+</div>
+
+<!-- department -->
+<div class="shadow card mt-3">
+    <div class="card-body">
+        <h5 class="card-title pb-3">
+            <span class="h5 me-1">Department</span> 
+            <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+        </h5>
+        <input type="text" class="form-control no-border w-50" placeholder="Type here..."
+        value="{{ department }}">
+    </div>
+</div>
+
+<!-- college -->
+<div class="shadow card mt-3">
+    <div class="card-body">
+        <h5 class="card-title pb-3">
+            <span class="h5 me-1">College</span> 
+            <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+        </h5>
+        <input type="text" class="form-control no-border w-50" placeholder="Type here..."
+        value="{{ college }}">
+    </div>
+</div>
+
+<!-- pagination -->
+<div class="mt-5 mb-5">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li *ngFor="let route of researchCompetencyRoutes; let i = index" [ngClass]="isPageActive(route.routeLink)?'active':''" class="page-item">
+                <a class="page-link" (click)="navigateToPagination(route.routeLink )">{{ i + 1 }}</a>
+            </li>
+        </ul>
+    </nav>
+</div>

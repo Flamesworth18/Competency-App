@@ -1,0 +1,55 @@
+<div class="container py-5">
+  
+    <h2 class="col-xl-7 text-success mx-auto mb-3">
+      My Assessments
+      <small class="text-muted">Previously taken assessments</small>
+    </h2>
+
+    <div class=" row d-flex justify-content-center">
+      <div class="col-xl-7 mb-3">
+        <div *ngIf="!(loader._isLoading | async)">
+
+            <div class="shadow card mx-auto mb-3" *ngFor="let competency of userCompetencies | filter:searchCompetency">
+              <div class="card-body px-3">
+                  <h5 class="card-title pb-1">
+                      <span class="h4 me-1">{{ competency.competencyName }}</span> 
+                  </h5>
+                  <div class="pb-1">
+                    <span class="h6">Date Taken: </span> <span>{{ competency.dateCreated }}</span>
+                  </div>
+                  <div class="pb-2">
+                    <span class="h6">Time Taken: </span> <span>{{ competency.timeCreated }}</span>
+                  </div>
+                  <div>
+                    <a (click)="navigateToView(competency)" class="link-primary">View Details</a>
+                  </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+      
+  
+      <div class="col-xl-2">
+  
+          <form class="shadow-sm mb-3">
+              <input [(ngModel)]="searchCompetency" class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+          </form>
+  
+          <div class="card shadow">
+              <div class="card-header bg-success text-white">
+                Sort By
+              </div>
+              <ul class="list-group list-group-flush" *ngFor="let competency of competencies">
+                <li class="list-group-item" [ngClass]="competency.name === currentCompetency? 'active':''" 
+                (click)="selectedCompetency(competency.name)">
+                  {{ competency.name }}
+                </li>
+              </ul>
+          </div>
+  
+          <button type="button" (click)="navigateToAssessmentInstruction()" class="btn btn-success w-100 mt-3">Go Back</button>
+      </div>
+    </div>
+ 
+</div>

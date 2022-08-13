@@ -1,0 +1,86 @@
+<div class="container py-5 h-100">
+  
+    <h2 class="col-xl-7 text-success mx-auto mb-3">
+      Assessment Forms
+      <small class="text-muted">Users taken assessments</small>
+    </h2>
+
+    <div class=" row d-flex justify-content-center">
+      <div class="col-xl-7 mb-3">
+        <div *ngIf="!(loader._isLoading | async)">
+
+            <div class="shadow card mx-auto mb-3" *ngFor="let competency of userCompetencies | filter: searchCompetency">
+              <div class="card-body px-3" *ngIf="filterBy(competency)">
+                  
+                <div class="d-flex align-items-center justify-content-between">
+                  
+                  <div>
+
+                    <div class="card-title pb-1">
+                      <span class="h4 me-1">{{ competency.competencyName }}</span> 
+                    </div>
+                    <div class="pb-1">
+                        <span class="h6">Submitted By: </span> <span class="name">{{ competency.employeeName }}</span> 
+                    </div>
+                    <div class="pb-1">
+                      <span class="h6">Date Taken: </span> <span>{{ competency.dateCreated }}</span>
+                    </div>
+                    <div class="pb-2">
+                      <span class="h6">Time Taken: </span> <span>{{ competency.timeCreated }}</span>
+                    </div>
+
+                      <a (click)="viewResult(competency)" class="link-primary">View Result</a> |
+                      <a (click)="navigateToView(competency)" class="link-primary">Edit</a> |
+                      <a (click)="confirmDelete(competency)" class="link-primary">Delete</a>
+
+                    </div>      
+
+                    <div class="text-end display-5 pe-3 text-success print t">
+                      <i (click)="print(competency)" class="fa-solid fa-print"></i>
+                      <span class="tooltip-text">Print</span>
+                    </div>
+
+                </div>
+                  
+              </div>
+
+          </div>
+        </div>
+      </div>
+      
+  
+      <div class="col-xl-2">
+  
+          <form class="shadow-sm mb-3">
+              <input [(ngModel)]="searchCompetency" class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+          </form>
+  
+          <div class="card shadow">
+              <div class="card-header bg-success text-white text-center">
+                Sort by <i class='bx bx-sort-down align-middle' ></i>
+              </div>
+              <ul class="list-group list-group-flush" *ngFor="let competency of competencies">
+                <li class="list-group-item" [ngClass]="competency.name === currentCompetency? 'active':''" 
+                (click)="selectedCompetency(competency.name)">
+                  {{ competency.name }}
+                </li>
+              </ul>
+          </div>
+
+          <div class="dropdown mt-3 w-100 ">
+            <button class=" w-100 shadow btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Show by
+            </button>
+            <ul class="dropdown-menu w-100 " aria-labelledby="dropdownMenuButton1">
+              <li><a class="w-100 dropdown-item" (click)="showByRecently()">Recently</a></li>
+              <li><a class="w-100 dropdown-item" (click)="showByYesterday()">Yesterday</a></li>
+              <li><a class="w-100 dropdown-item" (click)="showByThisWeek()">This Week</a></li>
+              <li><a class="w-100 dropdown-item" (click)="showByThisMonth()">This Month</a></li>
+            </ul>
+          </div>
+
+      </div>
+    </div>
+ 
+</div>
+

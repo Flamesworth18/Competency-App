@@ -1,0 +1,55 @@
+<div class="h-100 container mb-4">
+    <form [formGroup]="updateUserForm" (ngSubmit)="updateUser()">
+        <div class="border p-3 mt-4">
+            <div class="row pb-2">
+                <h2 class="text-success">Update User</h2>
+                <hr />
+            </div>
+            <div class="mb-3">
+                <label>First Name</label>
+                <input class="form-control" id="firstname" type="text" formControlName="firstname" placeholder="Enter first name" maxlength="16" [(ngModel)]="tempUser.firstName" required/>
+                <span class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label>Last Name</label>
+                <input class="form-control" id="lastname" type="text" formControlName="lastname" placeholder="Enter last name" maxlength="16" [(ngModel)]="tempUser.lastName" required/>
+                <span class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label>Email Address</label>
+                <input class="form-control" id="email" type="text" formControlName="email" placeholder="Enter email" [(ngModel)]="tempUser.emailAddress" required/>
+                <span class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label>Username</label>
+                <input class="form-control" id="username" type="text" formControlName="username" placeholder="Enter Username" maxlength="16" [(ngModel)]="tempUser.username" required/>
+                <span class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label>Password</label>
+                <input class="form-control" id="password" type="password" formControlName="password" placeholder="Enter password" maxlength="16" required />
+                <span class="text-danger"></span>
+            </div>
+            <label>Department</label>
+            <select (change)="selectedDepartment($any($event).target.value)" id="department" formControlName="department" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option [value]="null" selected disabled>Select Department</option>
+                <option [value]="department.name" *ngFor="let department of departments">{{ department.name }}</option>
+            </select>
+            <label>College</label>
+            <select id="college" formControlName="college" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option [value]="null" selected disabled>Select College</option>
+                <option [value]="college.name" *ngFor="let college of colleges">{{ college.name }}</option>
+            </select>
+            <label>Role</label>
+            <select [(ngModel)]="tempUser.role" id="role" formControlName="role" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option [value]="null" selected disabled>Select Role</option>
+                <option>User</option>
+                <option>Administrator</option>
+            </select>
+            <button type="submit" [disabled]="updateUserForm.invalid" class="btn btn-success" style="width:150px">Save</button>
+            <a (click)="navigateToUserList()" class="btn btn-secondary mx-1" style="width:150px">
+                Back to List
+            </a>
+        </div>
+    </form>
+</div>

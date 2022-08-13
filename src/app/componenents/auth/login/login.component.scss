@@ -1,0 +1,38 @@
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+.error{
+    color: red;
+}
+
+.forgot{
+    text-decoration: none;
+    cursor: pointer;
+}
+.forgot:hover{
+    color: blue;
+    text-decoration: underline;
+}
+
+.register{
+    text-decoration: none;
+    cursor: pointer;
+    color: rgba(255, 0, 0, 0.681)
+}
+
+.register:hover{
+    color: red;
+    text-decoration: underline;
+}

@@ -1,0 +1,50 @@
+<div class="h-100 container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-success">Department List</h2>
+		</div>
+        <div class="col-6 text-end">
+            <a class="btn btn-success" (click)="createDepartment()">
+                <i class="fa-solid fa-circle-plus"></i> &nbsp; Create Department
+			</a>
+		</div>
+	</div>
+    <br /><br />
+
+    <div class="table-responsive">
+        <table class="table table-hover table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Colleges
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody *ngIf="!(loader._isLoading | async)">
+                    <tr *ngFor="let department of departments">
+                        <td width="50%">
+                            {{ department.name }}
+                        </td>
+                        <td width="50%">
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <option [value]="null" selected disabled>{{ department.name }} Colleges</option>
+                                <option [value]="college.name" *ngFor="let college of department.colleges">{{ college.name }}</option>
+                            </select>
+                        </td>
+                        <td width="30%">
+                           <a class="btn btn-success" (click)="editDepartment(department)"> <i class="fa-solid fa-pen-to-square"></i>Edit</a>
+                        </td>
+                        <td width="30%">
+                            <a class="btn btn-danger" (click)="confirmDelete(department.id)"> <i class="fa-solid fa-trash"></i>Delete</a>
+                        </td>
+                    </tr>
+            </tbody>
+        
+        </table>
+    </div>
+</div>

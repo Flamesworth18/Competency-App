@@ -1,0 +1,156 @@
+<div class="container py-5 h-100 row d-flex justify-content-center mx-auto">
+
+  <div class="col-xl-7">
+
+    <!-- title -->
+    <div class="shadow card mx-auto">
+          <div class="card-header bg-success text-light h3">
+              Instruction Competency 1
+          </div>
+          <div class="card-body">
+              <h5 class="card-title">Demonstrating professional practice through teaching</h5>
+              <p class="pre ms-3">
+                  <b>Self-Assessment</b> (Please select the level of your competency based on the behavioural description above.
+              </p>
+
+              <div class="mb-3 ms-3 mx-auto d-flex">
+                  <div class="me-2">Basic: </div>
+                  <div>
+                      <div class="form-check form-check-inline">
+                          <input [checked]="userInstructionCompetency.oneBasicResult.notYet" class="form-check-input" type="radio" name="basicRadioOptions" id="basicRadio1" onclick="return false;" onkeydown="return false;">
+                          <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input [checked]="userInstructionCompetency.oneBasicResult.partially" class="form-check-input" type="radio"  name="basicRadioOptions" id="basicRadio2" onclick="return false;" onkeydown="return false;">
+                          <label class="form-check-label" for="inlineRadio2">Partially</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input [checked]="userInstructionCompetency.oneBasicResult.competent" class="form-check-input" type="radio" name="basicRadioOptions" id="basicRadio3" onclick="return false;" onkeydown="return false;">
+                          <label class="form-check-label" for="inlineRadio3">Competent</label>
+                        </div>
+                  </div>
+              </div>
+
+              <div class="mb-3 ms-3 mx-auto d-flex">
+                  <div class="me-2">Intermediate: </div>
+                  <div>
+                      <div class="form-check form-check-inline">
+                          <input [checked]="userInstructionCompetency.oneIntermediateResult.notYet" class="form-check-input" type="radio" name="intermediateRadioOptions" id="intermediateRadio1" onclick="return false;" onkeydown="return false;">
+                          <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input [checked]="userInstructionCompetency.oneIntermediateResult.partially" class="form-check-input" type="radio" name="intermediateRadioOptions" id="intermediateRadio2" onclick="return false;" onkeydown="return false;">
+                          <label class="form-check-label" for="inlineRadio2">Partially</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input [checked]="userInstructionCompetency.oneIntermediateResult.competent" class="form-check-input" type="radio" name="intermediateRadioOptions" id="intermediateRadio3" onclick="return false;" onkeydown="return false;">
+                          <label class="form-check-label" for="inlineRadio3">Competent</label>
+                        </div>
+                  </div>
+              </div>
+
+              <div class="mb-3 ms-3 mx-auto d-flex">
+                  <div class="me-2">Advanced: </div>
+                  <div>
+                      <div class="form-check form-check-inline">
+                          <input [checked]="userInstructionCompetency.oneAdvancedResult.notYet" class="form-check-input" type="radio" name="advancedRadioOptions" id="advancedRadio1" onclick="return false;" onkeydown="return false;">
+                          <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input [checked]="userInstructionCompetency.oneAdvancedResult.partially" class="form-check-input" type="radio" name="advancedRadioOptions" id="advancedRadio2" onclick="return false;" onkeydown="return false;">
+                          <label class="form-check-label" for="inlineRadio2">Partially</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input [checked]="userInstructionCompetency.oneAdvancedResult.competent" class="form-check-input" type="radio" name="advancedRadioOptions" id="advancedRadio3" onclick="return false;" onkeydown="return false;">
+                          <label class="form-check-label" for="inlineRadio3">Competent</label>
+                        </div>
+                  </div>
+              </div>
+
+              <div class="mb-3 ms-3 mx-auto d-flex">
+                  <div class="me-2">Superior: </div>
+                  <div>
+                      <div class="form-check form-check-inline">
+                          <input [checked]="userInstructionCompetency.oneSuperiorResult.notYet" class="form-check-input" type="radio" name="superiorRadioOptions" id="superiorRadio1" onclick="return false;" onkeydown="return false;">
+                          <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input [checked]="userInstructionCompetency.oneSuperiorResult.partially" class="form-check-input" type="radio" name="superiorRadioOptions" id="superiorRadio2" onclick="return false;" onkeydown="return false;">
+                          <label class="form-check-label" for="inlineRadio2">Partially</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input [checked]="userInstructionCompetency.oneSuperiorResult.competent" class="form-check-input" type="radio"  name="superiorRadioOptions" id="superiorRadio3" onclick="return false;" onkeydown="return false;">
+                          <label class="form-check-label" for="inlineRadio3">Competent</label>
+                        </div>
+                  </div>
+              </div>
+
+          </div>
+    </div>
+
+    <!-- month and year -->
+    <div class="shadow card mt-3 mx-auto">
+        <div class="card-body">
+            <h5 class="card-title">Month and Year the event took place</h5>
+            <p class="pre mx-3">
+                (Please
+                articulate below when the event happened by
+                stating WHEN the said behavior indicators were
+                demonstrated; month and Year, to be crossreferenced with DTR or IPCR entries):
+            </p>
+        </div>
+    </div>
+
+    <!-- narrative -->
+    <div class="shadow card mt-3 mx-auto">
+        <div class="card-body">
+            <h5 class="card-title">Narrative Exposition of Evidence</h5>
+            <p class="pre mx-3">
+                (Cite a behavioural indicator. Recall and narrate an event
+                that you demonstrated this behavioural indicator. Please use <i>STAR</i> guideline in drafting your essay.)
+            </p>
+        </div>
+    </div>
+
+    <!-- essay -->
+    <div class="shadow card mt-3 mx-auto ">
+        <div class="card-body">
+            <textarea [(ngModel)]="userInstructionCompetency.oneEssay"
+             class="form-control no-border"
+              placeholder="Type here..."
+               rows="10"
+               maxlength="300" >
+              </textarea>
+        </div>
+    </div>
+
+    <!-- pagination -->
+    <div class="mt-5 mx-auto">
+      <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+              <li *ngFor="let route of instructionCompetencyRoutes; let i = index" [ngClass]="isPageActive(route.routeLink)?'active':''" class="page-item">
+                  <a class="page-link" (click)="navigateToPagination(route.routeLink )">{{ i + 1 }}</a>
+              </li>
+          </ul>
+      </nav>
+    </div>
+    
+  </div>
+
+  <div class="col-xl-2">
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+          Competencies
+        </div>
+        <ul class="list-group list-group-flush" *ngFor="let competency of competencies">
+          <li class="list-group-item" [ngClass]="competency.name === currentCompetency? 'active':''" 
+          (click)="confirmNavigate(competency.name)">
+            {{ competency.name }}
+          </li>
+        </ul>
+    </div>
+
+    <button type="button" (click)="navigateToTakenAssessments()" class="shadow btn btn-outline-success w-100 mt-3">My Assessments</button>
+  </div>
+
+</div>

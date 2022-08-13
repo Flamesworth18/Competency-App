@@ -1,0 +1,81 @@
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-sm-10 col-md-8 col-lg-10 col-xl-6">
+          <form [formGroup]="contactForm" (ngSubmit)="contactSubmitted()">
+            <div class="text-center">
+              <p class="h1 fw-normal mt-5 mb-0 me-3">Welcome to <b style="color: #29bf12">Competency</b></p>
+            </div>
+  
+            <div class="divider d-flex align-items-center my-4">
+              <p class="text-center lead mx-3 mb-0">Contact Us</p>
+            </div>
+  
+            <!-- Name input -->
+            <div class="form-outline mb-2">
+              <div class="m-100">
+                  <label class="col-3 form-label" for="form3Example3">Name</label>
+                  <!-- <label class="col-9 error text-end">
+                      Name is required
+                  </label>
+                  <label class="col-9 error text-end">
+                      Name should be complete
+                  </label> -->
+              </div>  
+              <input class="form-control form-control-lg" 
+                type="text"
+                id="name"
+                formControlName="name" 
+                maxlength="16" required
+                placeholder="Enter your name" />
+            </div>
+  
+            <!-- Email Address input -->
+            <div class="form-outline mb-2">
+                <div class="m-100">
+                    <label class="col-4 form-label" for="form3Example3">Email Address</label>
+                    <!-- <label class="col-8 error text-end">
+                      Email is required!
+                    </label>
+                    <label class="col-8 error text-end">
+                      Email is Invalid!
+                    </label> -->
+                </div>   
+                <input class="form-control form-control-lg" 
+                id="email" 
+                type="text" 
+                formControlName="email" 
+                placeholder="Enter your email" required/>
+            </div>
+
+            <!-- Message Input -->
+            <div class="form-group">
+                <div class="m-100">
+                    <label class="col-4 form-label" for="form3Example3">Your Message</label>
+                    <!-- <label class="col-8 error text-end">
+                      Email is required!
+                    </label>
+                    <label class="col-8 error text-end">
+                      Email is Invalid!
+                    </label> -->
+                </div>  
+                <textarea placeholder="Write message here..." 
+                  class="form-control form-control-lg" 
+                  id="message" 
+                  formControlName="message" 
+                  rows="5">
+                </textarea>
+            </div>
+  
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="submit" class="btn btn-success btn-lg w-100" [disabled]="contactForm.invalid"
+                style="padding-left: 2.5rem; padding-right: 2.5rem;">Send</button>
+              <p class="text-center small fw-bold mt-2 pt-1 mb-0">Contact us here <a
+                  class="contact">gcrtan@usm.edu.ph</a></p>
+            </div>
+  
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>

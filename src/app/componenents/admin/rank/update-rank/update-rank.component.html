@@ -1,0 +1,19 @@
+<div class="h-100 container">
+    <form [formGroup]="editRankForm" (ngSubmit)="editRank()">
+        <div class="border p-3">
+            <div class="row pb-2">
+                <h2 class="text-success">Update Rank</h2>
+                <hr />
+            </div>
+            <div class="mb-3">
+                <label>Rank Name</label>
+                <input class="form-control" [(ngModel)]="tempRank.name" id="name" type="text" formControlName="name" placeholder="Enter rank name..." required/>
+                <span class="text-danger"></span>
+            </div>
+            <button type="submit" [disabled]="editRankForm.invalid" class="btn btn-success" style="width:150px">Save</button>
+            <a (click)="navigateToRankList()" class="btn btn-secondary mx-1" style="width:150px">
+                Back to List
+            </a>
+        </div>
+    </form>
+</div>

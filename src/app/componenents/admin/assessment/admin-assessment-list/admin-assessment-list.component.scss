@@ -1,0 +1,87 @@
+.card{
+    text-align: justify;
+}
+
+li{
+    cursor: pointer;
+}
+
+.list-group > li:focus,
+.list-group > li:hover
+{
+    color: lightgreen;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.list-group > .active
+{
+    color: white;
+    background-color: green !Important;
+    border: solid 1px green !Important;
+}
+
+.list-group > .active:hover
+{
+    background-color: green !Important;
+    border: solid 1px green;
+}
+
+a{
+    cursor: pointer;
+}
+
+.container{
+    height: 100%;
+    min-height: 800px;
+}
+
+.name{
+    text-transform: capitalize;
+}
+
+.print{
+    cursor: pointer;
+}
+
+.print:hover{
+    i{
+        color: darkgreen;
+    }
+}
+
+.t{
+    position: relative;
+    display: inline-block;
+
+    .tooltip-text{
+        font-size: 15px;
+        font-weight: 700;
+        visibility: hidden;
+        width: 60px;
+        background-color: green;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        top: 105%;
+        left: 50%;
+        margin-left: -41px;
+        overflow: visible;
+    }
+
+    .tooltip-text::after{
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        border-style: solid;
+        border-color: transparent transparent green transparent;
+    }
+}
+
+.t:hover .tooltip-text{
+    visibility: visible;
+}

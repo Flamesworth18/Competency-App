@@ -1,0 +1,21 @@
+<div class="vh-100 container p-4">
+    <div class="h2 text-center">WELCOME ADMIN!</div>
+    <div class="h6 text-center mb-5">HRDMO Competency System</div>
+
+    <div class="mb-3" fxLayout="row" fxLayoutAlign="space-between center" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px">
+        <mat-card fxFlex>
+            <span class="label">Total Assessments</span>
+            <div class="d-flex align-items-center">
+                <span class="display-3"><i class="fa-solid fa-layer-group"></i></span>
+                <span class="count ms-3">{{ total }}</span>
+            </div>
+        </mat-card>
+        <mat-card fxFlex>
+            <span class="label">Today's Assessments</span>
+            <div class="d-flex align-items-center">
+                <span class="display-3"><i class="fa-solid fa-cubes-stacked"></i></span>
+                <span class="count ms-3">{{ today }}</span>
+            </div>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,756 @@
+<div class="container py-5 h-100 row d-flex justify-content-center mx-auto">
+        
+    <!--first column-->
+    <div class="col-xl-2">
+        <div #top class="card shadow">
+            <div class="card-header bg-success text-white">
+              Core Competency
+            </div>
+            <ul class="list-group list-group-flush" *ngFor="let core of coreCompetencyCategories">
+              <li class="list-group-item" [ngClass]="core.name === currentCompetency? 'active':''" 
+              (click)="selectedCoreCompetency(core.name)" (click)="navigateToSection(core.section)">
+                {{ core.name }}
+              </li>
+            </ul>
+        </div>
+
+        <button type="button" (click)="navigateToTakenAssessments()" class="btn btn-outline-success w-100 my-3">Go Back</button>
+    </div>
+ 
+    <!--second column-->
+    <div class="col-xl-7">
+
+            <!--#region Core Competency Instruction-->
+
+                <!-- title -->
+                <div class="shadow card">
+                    <div class="card-header bg-success text-light h3">
+                        USM Faculty Competency Assessment
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Instructions</h5>
+                        <p class="card-text text-muted p p-3">
+                            On this Competency Assessment Booklet, you will find the Competency Standards of the Faculty Members of the University of Southern Mindanao.
+                            As a faculty member, you will be assessed on the six (6) competency clusters: <i>Core, Leadership, Instruction, Research, Extension and Prodcution.</i>
+                            You are to assess your level of competency according to BIAS assessment: <b>Basic, Intermediate, Advanced, and Superior</b>.
+                            Read carefully the behavioral indicators described in the BIAS matrix. Assess yourself which level your current competencies are.
+                            On the self-assessment page, please indicate your competency. After ascertaining your competency level, please describe an event where you have demonstrated
+                            your competencies (2016 - 2020 period). Please indicate also when the event happened. We suggest you follow the <i>STAR</i> guideline in responding
+                            to the essay on evidence: Describe a <b>SITUATION</b> where you needed to demonstrate the competency. In what capacity or what <b>TASKS</b>
+                            you performed it? What were your <b>ACTIONS</b>? What were the <b>RESULTS</b>? This form should be printed and sent to HRMDO.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- fullname -->
+                <div class="shadow card mt-3">
+                    <div class="card-body">
+                        <h5 class="card-title pb-3">
+                            <span class="h5 me-1">Full Name</span> 
+                            <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                        </h5>
+                        <input readonly type="text" class="form-control no-border w-50 name" placeholder="Type here..."
+                        value="{{ competencyEmployeeName }}">
+                    </div>
+                </div>
+                
+                <!-- department -->
+                <div class="shadow card mt-3">
+                    <div class="card-body">
+                        <h5 class="card-title pb-3">
+                            <span class="h5 me-1">Department</span> 
+                            <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                        </h5>
+                        <input readonly type="text" class="form-control no-border w-50" placeholder="Type here..."
+                        value="{{ competencyDepartment }}">
+                    </div>
+                </div>
+                
+                <!-- college -->
+                <div class="shadow card mt-3">
+                    <div class="card-body">
+                        <h5 class="card-title pb-3">
+                            <span class="h5 me-1">College</span> 
+                            <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                        </h5>
+                        <input readonly type="text" class="form-control no-border w-50" placeholder="Type here..."
+                        value="{{ competencyCollege }}">
+                    </div>
+                </div>
+
+            <!--#endregion-->
+
+            <div class="search-results" infiniteScroll [infiniteScrollDistance]="0" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+
+                <!--#region Core Competency 1-->
+                        
+                        <!-- CHECKBOX -->
+                        <div *ngIf="option1Done">
+                        
+                            <!-- title -->
+                            <div class="shadow card mt-3 mx-auto">
+                                <div class="card-header bg-success text-light h3">
+                                    Core Competency 1
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Exemplifying Integrity and Professionalism</h5>
+                                    <span class="pre pt-2 ps-2" style="font-size: 13px">
+                                        1.1 Conducts self in an excellent and competent manner expected of a person trained to do the job.
+                                    </span>
+                                    <span class="pre ps-2" style="font-size: 13px">
+                                        1.2 Acknowledges and respects authority and demonstrates readiness in accepting and complying with rules.
+                                    </span>
+                                    <span class="pre ps-2" style="font-size: 13px">
+                                        1.3 Demonstrates high standards of professional behaviour as public servants.
+                                    </span>
+                                    <span class="pre ps-2" style="font-size: 13px">
+                                        1.4 Adhering to ethical as well as moral principles, values, and standards of public office.
+                                    </span>
+                                </div>
+                            </div>
+        
+                            <!-- basic -->
+                            <div #core1 class="shadow card mt-3 mx-auto ">
+                                <div class="card-body">
+                                    <h5 class="card-title pb-3">
+                                        <span class="h5 me-1">Basic</span> 
+                                        <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                                    </h5>
+                                    <div class="form-check pb-3" *ngFor="let option of categoryOneOptions.basicOptions">
+                                        <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" id="option1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            {{ option.label }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <!-- intermediate -->
+                            <div class="shadow card mt-3 mx-auto">
+                                <div class="card-body">
+                                    <h5 class="card-title pb-3">
+                                        <span class="h5 me-1">Intermediate</span> 
+                                        <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                                    </h5>
+                                    <div class="form-check pb-3" *ngFor="let option of categoryOneOptions.intermediateOptions">
+                                        <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" id="option1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            {{ option.label }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <!-- advanced -->
+                            <div class="shadow card mt-3  mx-auto ">
+                                <div class="card-body">
+                                    <h5 class="card-title pb-3">
+                                        <span class="h5 me-1">Advanced</span> 
+                                        <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                                    </h5>
+                                    <div class="form-check pb-3" *ngFor="let option of categoryOneOptions.advancedOptions">
+                                        <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" id="option1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            {{ option.label }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <!-- Superior -->
+                            <div class="shadow card mt-3  mx-auto ">
+                                <div class="card-body">
+                                    <h5 class="card-title pb-3">
+                                        <span class="h5 me-1">Superior</span> 
+                                        <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                                    </h5>
+                                    <div class="form-check pb-3" *ngFor="let option of categoryOneOptions.superiorOptions">
+                                        <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" id="option1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            {{ option.label }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                        <!-- ESSAY -->
+                        <div *ngIf="result1Done">
+
+                            <!-- title -->
+                            <div class="shadow card mt-3 mx-auto">
+                                <div class="card-body">
+                                    <h5 class="card-title">Exemplifying Integrity and Professionalism</h5>
+                                    <p class="pre ms-3">
+                                        <b>Self-Assessment</b> (Please select the level of your competency based on the behavioural description above.
+                                    </p>
+                        
+                                    <div class="mb-3 ms-3 mx-auto d-flex">
+                                        <div class="me-2">Basic: </div>
+                                        <div>
+                                            <div class="form-check form-check-inline">
+                                                <input [checked]="categoryOneResults.basicResult.notYet" class="form-check-input" type="radio" name="basicOneRadioOptions" id="basicOneRadio1" onclick="return false;" onkeydown="return false;">
+                                                <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input [checked]="categoryOneResults.basicResult.partially" class="form-check-input" type="radio" name="basicOneRadioOptions" id="basicOneRadio2" onclick="return false;" onkeydown="return false;">
+                                                <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input [checked]="categoryOneResults.basicResult.competent" class="form-check-input" type="radio" name="basicOneRadioOptions" id="basicOneRadio3" onclick="return false;" onkeydown="return false;">
+                                                <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                        
+                                    <div class="mb-3 ms-3 mx-auto d-flex">
+                                        <div class="me-2">Intermediate: </div>
+                                        <div>
+                                            <div class="form-check form-check-inline">
+                                                <input [checked]="categoryOneResults.intermediateResult.notYet" class="form-check-input" type="radio" name="intermediateOneRadioOptions" id="intermediateOneRadio1" onclick="return false;" onkeydown="return false;">
+                                                <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input [checked]="categoryOneResults.intermediateResult.partially" class="form-check-input" type="radio" name="intermediateOneRadioOptions" id="intermediateOneRadio2" onclick="return false;" onkeydown="return false;">
+                                                <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input [checked]="categoryOneResults.intermediateResult.competent" class="form-check-input" type="radio" name="intermediateOneRadioOptions" id="intermediateOneRadio3" onclick="return false;" onkeydown="return false;">
+                                                <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                        
+                                    <div class="mb-3 ms-3 mx-auto d-flex">
+                                        <div class="me-2">Advanced: </div>
+                                        <div>
+                                            <div class="form-check form-check-inline">
+                                                <input [checked]="categoryOneResults.advancedResult.notYet" class="form-check-input" type="radio" name="advancedOneRadioOptions" id="advancedOneRadio1" onclick="return false;" onkeydown="return false;">
+                                                <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input [checked]="categoryOneResults.advancedResult.partially" class="form-check-input" type="radio" name="advancedOneRadioOptions" id="advancedOneRadio2" onclick="return false;" onkeydown="return false;">
+                                                <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input [checked]="categoryOneResults.advancedResult.competent" class="form-check-input" type="radio" name="advancedOneRadioOptions" id="advancedOneRadio3" onclick="return false;" onkeydown="return false;">
+                                                <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                        
+                                    <div class="mb-3 ms-3 mx-auto d-flex">
+                                        <div class="me-2">Superior: </div>
+                                        <div>
+                                            <div class="form-check form-check-inline">
+                                                <input [checked]="categoryOneResults.superiorResult.notYet" class="form-check-input" type="radio" name="superiorOneRadioOptions" id="superiorOneRadio1" onclick="return false;" onkeydown="return false;">
+                                                <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input [checked]="categoryOneResults.superiorResult.partially" class="form-check-input" type="radio" name="superiorOneRadioOptions" id="superiorOneRadio2" onclick="return false;" onkeydown="return false;">
+                                                <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input [checked]="categoryOneResults.superiorResult.competent" class="form-check-input" type="radio" name="superiorOneRadioOptions" id="superiorOneRadio3" onclick="return false;" onkeydown="return false;">
+                                                <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                        
+                                </div>
+                            </div>
+                    
+                            <!-- month and year -->
+                            <div class="shadow card mt-3 mx-auto">
+                                <div class="card-body">
+                                    <h5 class="card-title">Month and Year the event took place</h5>
+                                    <p class="pre mx-3">
+                                        (Please
+                                        articulate below when the event happened by
+                                        stating WHEN the said behavior indicators were
+                                        demonstrated; month and Year, to be crossreferenced with DTR or IPCR entries):
+                                    </p>
+                                </div>
+                            </div>
+                    
+                            <!-- narrative -->
+                            <div class="shadow card mt-3 mx-auto">
+                                <div class="card-body">
+                                    <h5 class="card-title">Narrative Exposition of Evidence</h5>
+                                    <p class="pre mx-3">
+                                        (Cite a behavioural indicator. Recall and narrate an event
+                                        that you demonstrated this behavioural indicator. Please use <i>STAR</i> guideline in drafting your essay.)
+                                    </p>
+                                </div>
+                            </div>
+                    
+                            <!-- essay -->
+                            <div class="shadow card mt-3 mx-auto ">
+                                <div class="card-body">
+                                    <textarea readonly [(ngModel)]="categoryOneResults.essay" class="form-control no-border" placeholder="Type here..." rows="10"></textarea>
+                                </div>
+                            </div>
+        
+                        </div>
+
+                <!--#endregion-->
+        
+                <!--#region Core Competency 2-->
+                        
+                    <!-- CHECKBOX -->
+                    <div *ngIf="option2Done">
+                    
+                        <!-- title -->
+                        <div class="shadow card mt-3 mx-auto">
+                            <div class="card-header bg-success text-light h3">
+                                Core Competency 2
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Delivering Service Excellence</h5>
+                                <span class="pre pt-2 px-2" style="font-size: 13px">
+                                    2.1 Complies with established standards of delivery or service level agreements and delivers explcit requirements of customers.
+                                </span>
+                                <span class="pre px-2" style="font-size: 13px">
+                                    2.2 Provides proactive, responsive, accessible, courteous and effective public service.
+                                </span>
+                                <span class="pre px-2" style="font-size: 13px">
+                                    2.3 Provide the highest level of customer satisfaction which exceeds customer's expectation.
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- basic -->
+                        <div #core2 class="shadow card mt-3 mx-auto ">
+                            <div class="card-body">
+                                <h5 class="card-title pb-3">
+                                    <span class="h5 me-1">Basic</span> 
+                                    <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                                </h5>
+                                <div class="form-check pb-3" *ngFor="let option of categoryTwoOptions.basicOptions">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" id="option1" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- intermediate -->
+                        <div class="shadow card mt-3 mx-auto">
+                            <div class="card-body">
+                                <h5 class="card-title pb-3">
+                                    <span class="h5 me-1">Intermediate</span> 
+                                    <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                                </h5>
+                                <div class="form-check pb-3" *ngFor="let option of categoryTwoOptions.intermediateOptions">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" id="option1" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- advanced -->
+                        <div class="shadow card mt-3  mx-auto ">
+                            <div class="card-body">
+                                <h5 class="card-title pb-3">
+                                    <span class="h5 me-1">Advanced</span> 
+                                    <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                                </h5>
+                                <div class="form-check pb-3" *ngFor="let option of categoryTwoOptions.advancedOptions">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" id="option1" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Superior -->
+                        <div class="shadow card mt-3  mx-auto ">
+                            <div class="card-body">
+                                <h5 class="card-title pb-3">
+                                    <span class="h5 me-1">Superior</span> 
+                                    <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                                </h5>
+                                <div class="form-check pb-3" *ngFor="let option of categoryTwoOptions.superiorOptions">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" id="option1" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <!-- ESSAY -->
+                    <div *ngIf="result2Done">
+
+                        <!-- title -->
+                        <div class="shadow card mt-3 mx-auto">
+                            <div class="card-body">
+                                <h5 class="card-title">Delivering Service Excellence</h5>
+                                <p class="pre ms-3">
+                                    <b>Self-Assessment</b> (Please select the level of your competency based on the behavioural description above.
+                                </p>
+                    
+                                <div class="mb-3 ms-3 mx-auto d-flex">
+                                    <div class="me-2">Basic: </div>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryTwoResults.basicResult.notYet" class="form-check-input" type="radio" name="basicTwoRadioOptions" id="basicTwoRadio1" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryTwoResults.basicResult.partially" class="form-check-input" type="radio" name="basicTwoRadioOptions" id="basicTwoRadio2" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryTwoResults.basicResult.competent" class="form-check-input" type="radio" name="basicTwoRadioOptions" id="basicTwoRadio3" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                                <div class="mb-3 ms-3 mx-auto d-flex">
+                                    <div class="me-2">Intermediate: </div>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryTwoResults.intermediateResult.notYet" class="form-check-input" type="radio" name="intermediateTwoRadioOptions" id="intermediateTwoRadio1" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryTwoResults.intermediateResult.partially" class="form-check-input" type="radio" name="intermediateTwoRadioOptions" id="intermediateTwoRadio2" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryTwoResults.intermediateResult.competent" class="form-check-input" type="radio" name="intermediateTwoRadioOptions" id="intermediateTwoRadio3" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                                <div class="mb-3 ms-3 mx-auto d-flex">
+                                    <div class="me-2">Advanced: </div>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryTwoResults.advancedResult.notYet" class="form-check-input" type="radio" name="advancedTwoRadioOptions" id="advancedTwoRadio1" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryTwoResults.advancedResult.partially" class="form-check-input" type="radio" name="advancedTwoRadioOptions" id="advancedTwoRadio2" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryTwoResults.advancedResult.competent" class="form-check-input" type="radio" name="advancedTwoRadioOptions" id="advancedTwoRadio3" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                                <div class="mb-3 ms-3 mx-auto d-flex">
+                                    <div class="me-2">Superior: </div>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryTwoResults.superiorResult.notYet" class="form-check-input" type="radio" name="superiorTwoRadioOptions" id="superiorTwoRadio1" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryTwoResults.superiorResult.partially" class="form-check-input" type="radio" name="superiorTwoRadioOptions" id="superiorTwoRadio2" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryTwoResults.superiorResult.competent" class="form-check-input" type="radio" name="superiorTwoRadioOptions" id="superiorTwoRadio3" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                            </div>
+                        </div>
+                
+                        <!-- month and year -->
+                        <div class="shadow card mt-3 mx-auto">
+                            <div class="card-body">
+                                <h5 class="card-title">Month and Year the event took place</h5>
+                                <p class="pre mx-3">
+                                    (Please
+                                    articulate below when the event happened by
+                                    stating WHEN the said behavior indicators were
+                                    demonstrated; month and Year, to be crossreferenced with DTR or IPCR entries):
+                                </p>
+                            </div>
+                        </div>
+                
+                        <!-- narrative -->
+                        <div class="shadow card mt-3 mx-auto">
+                            <div class="card-body">
+                                <h5 class="card-title">Narrative Exposition of Evidence</h5>
+                                <p class="pre mx-3">
+                                    (Cite a behavioural indicator. Recall and narrate an event
+                                    that you demonstrated this behavioural indicator. Please use <i>STAR</i> guideline in drafting your essay.)
+                                </p>
+                            </div>
+                        </div>
+                
+                        <!-- essay -->
+                        <div class="shadow card mt-3 mx-auto ">
+                            <div class="card-body">
+                                <textarea readonly [(ngModel)]="categoryTwoResults.essay" class="form-control no-border" placeholder="Type here..." rows="10"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+
+                <!--endregion-->
+        
+                <!--#region Core Competency 3-->
+                        
+                    <!-- CHECKBOX -->
+                    <div *ngIf="option3Done">
+                    
+                        <!-- title -->
+                        <div class="shadow card mt-3 mx-auto">
+                            <div class="card-header bg-success text-light h3">
+                                Core Competency 3
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Interpersonal Communications</h5>
+                                <span class="pre pt-2 ps-2" style="font-size: 13px">
+                                    3.1 Effectively delivers messages that simply focus on facts or information.
+                                </span>
+                                <span class="pre ps-2" style="font-size: 13px">
+                                    3.2 Receives and conveys ideas, instructions, information by using appropriate language, method and manner to ensure the audience understands the message and takes necessary action.
+                                </span>
+                                <span class="pre ps-2" style="font-size: 13px">
+                                    3.3 Makes clear and convincing oral presentations to individual or groups; listens effectively and clarifies information as needed.
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- basic -->
+                        <div #core3 class="shadow card mt-3 mx-auto ">
+                            <div class="card-body">
+                                <h5 class="card-title pb-3">
+                                    <span class="h5 me-1">Basic</span> 
+                                    <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                                </h5>
+                                <div class="form-check pb-3" *ngFor="let option of categoryThreeOptions.basicOptions">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" id="option1" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- intermediate -->
+                        <div class="shadow card mt-3 mx-auto">
+                            <div class="card-body">
+                                <h5 class="card-title pb-3">
+                                    <span class="h5 me-1">Intermediate</span> 
+                                    <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                                </h5>
+                                <div class="form-check pb-3" *ngFor="let option of categoryThreeOptions.intermediateOptions">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" id="option1" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- advanced -->
+                        <div class="shadow card mt-3  mx-auto ">
+                            <div class="card-body">
+                                <h5 class="card-title pb-3">
+                                    <span class="h5 me-1">Advanced</span> 
+                                    <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                                </h5>
+                                <div class="form-check pb-3" *ngFor="let option of categoryThreeOptions.advancedOptions">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" id="option1" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Superior -->
+                        <div class="shadow card mt-3  mx-auto ">
+                            <div class="card-body">
+                                <h5 class="card-title pb-3">
+                                    <span class="h5 me-1">Superior</span> 
+                                    <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                                </h5>
+                                <div class="form-check pb-3" *ngFor="let option of categoryThreeOptions.superiorOptions">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" id="option1" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <!-- ESSAY -->
+                    <div *ngIf="result3Done">
+
+                        <!-- title -->
+                        <div class="shadow card mt-3 mx-auto">
+                            <div class="card-body">
+                                <h5 class="card-title">Interpersonal Communications</h5>
+                                <p class="pre ms-3">
+                                    <b>Self-Assessment</b> (Please select the level of your competency based on the behavioural description above.
+                                </p>
+                    
+                                <div class="mb-3 ms-3 mx-auto d-flex">
+                                    <div class="me-2">Basic: </div>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryThreeResults.basicResult.notYet" class="form-check-input" type="radio" name="basicThreeRadioOptions" id="basicThreeRadio1" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryThreeResults.basicResult.partially" class="form-check-input" type="radio" name="basicThreeRadioOptions" id="basicThreeRadio2" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryThreeResults.basicResult.competent" class="form-check-input" type="radio" name="basicThreeRadioOptions" id="basicThreeRadio3" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                                <div class="mb-3 ms-3 mx-auto d-flex">
+                                    <div class="me-2">Intermediate: </div>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryThreeResults.intermediateResult.notYet" class="form-check-input" type="radio" name="intermediateThreeRadioOptions" id="intermediateThreeRadio1" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryThreeResults.intermediateResult.partially" class="form-check-input" type="radio" name="intermediateThreeRadioOptions" id="intermediateThreeRadio2" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryThreeResults.intermediateResult.competent" class="form-check-input" type="radio" name="intermediateThreeRadioOptions" id="intermediateThreeRadio3" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                                <div class="mb-3 ms-3 mx-auto d-flex">
+                                    <div class="me-2">Advanced: </div>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryThreeResults.advancedResult.notYet" class="form-check-input" type="radio" name="advancedThreeRadioOptions" id="advancedThreeRadio1" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryThreeResults.advancedResult.partially" class="form-check-input" type="radio" name="advancedThreeRadioOptions" id="advancedThreeRadio2" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryThreeResults.advancedResult.competent" class="form-check-input" type="radio" name="advancedThreeRadioOptions" id="advancedThreeRadio3" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                                <div class="mb-3 ms-3 mx-auto d-flex">
+                                    <div class="me-2">Superior: </div>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryThreeResults.superiorResult.notYet" class="form-check-input" type="radio" name="superiorThreeRadioOptions" id="superiorThreeRadio1" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryThreeResults.superiorResult.partially" class="form-check-input" type="radio" name="superiorThreeRadioOptions" id="superiorThreeRadio1" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input [checked]="categoryThreeResults.superiorResult.competent" class="form-check-input" type="radio" name="superiorThreeRadioOptions" id="superiorThreeRadio1" onclick="return false;" onkeydown="return false;">
+                                            <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                            </div>
+                        </div>
+                
+                        <!-- month and year -->
+                        <div class="shadow card mt-3 mx-auto">
+                            <div class="card-body">
+                                <h5 class="card-title">Month and Year the event took place</h5>
+                                <p class="pre mx-3">
+                                    (Please
+                                    articulate below when the event happened by
+                                    stating WHEN the said behavior indicators were
+                                    demonstrated; month and Year, to be crossreferenced with DTR or IPCR entries):
+                                </p>
+                            </div>
+                        </div>
+                
+                        <!-- narrative -->
+                        <div class="shadow card mt-3 mx-auto">
+                            <div class="card-body">
+                                <h5 class="card-title">Narrative Exposition of Evidence</h5>
+                                <p class="pre mx-3">
+                                    (Cite a behavioural indicator. Recall and narrate an event
+                                    that you demonstrated this behavioural indicator. Please use <i>STAR</i> guideline in drafting your essay.)
+                                </p>
+                            </div>
+                        </div>
+                
+                        <!-- essay -->
+                        <div class="shadow card mt-3 mx-auto ">
+                            <div class="card-body">
+                                <textarea readonly [(ngModel)]="categoryThreeResults.essay" class="form-control no-border" placeholder="Type here..." rows="10"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+
+                <!--endregion-->
+
+            </div>
+
+
+            <!-- spinner -->
+            <div *ngIf="dataIsIncomplete" class="p-5" style="position: relative;">
+                <ngx-spinner
+                    bdOpactiy = 0.9
+                    bdColor = ""
+                    size = "default"
+                    color = "green"
+                    type = "ball-pulse-sync"
+                    [fullScreen] = "false"
+                >
+                </ngx-spinner>
+            </div>
+
+            <!-- alert -->
+            <div *ngIf="!dataIsIncomplete && showAlert" class="mt-5 no-items ">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <div class="text-muted h6 alert alert-secondary p-2">No more items to show</div>
+                </div>
+            </div>
+
+            <!-- go to top section -->
+            <div *ngIf="!showAlert" class="arrow-btn">
+                <button type="button" (click)="navigateToTopSection()" class="m-3 btn btn-danger btn-floating btn-lg rounded-circle"> 
+                    <i class="fas fa-arrow-up"></i> 
+                </button>
+            </div>
+    </div>
+
+</div>
+
+
+            
+            

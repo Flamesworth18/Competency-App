@@ -1,0 +1,71 @@
+<div class="h-100 container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-success">User List</h2>
+		</div>
+        <div class="col-6 text-end">
+            <a class="btn btn-success" (click)="createUser()">
+                <i class="fa-solid fa-circle-plus"></i> &nbsp; Create User
+			</a>
+		</div>
+	</div>
+    <br /><br />
+
+    <div class="table-responsive">
+        <table class="table table-hover table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        FullName
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Department
+                    </th>
+                    <th>
+                        College
+                    </th>
+                    <th>
+                        Role
+                    </th>
+                    <th>
+                        Date Created
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody *ngIf="!(loader._isLoading | async)">
+                    <tr *ngFor="let user of users">
+                        <td width="25%">
+                            {{ user.firstName }} {{ user.lastName }}
+                        </td>
+                        <td width="25%">
+                            {{ user.emailAddress }}
+                        </td>
+                        <td width="10%">
+                            {{ user.department }}
+                        </td>
+                        <td width="20%">
+                            {{ user.college }}
+                        </td>
+                        <td width="10%">
+                            {{ user.role }}
+                        </td>
+                        <td width="20%">
+                            {{ user.dateCreated }}
+                        </td>
+                        <td width="30%">
+                           <a class="btn btn-success" (click)="editUser(user)"> <i class="fa-solid fa-pen-to-square"></i>Edit</a>
+                        </td>
+                        <td width="30%">
+                            <a class="btn btn-danger" (click)="confirmDelete(user.id)"> <i class="fa-solid fa-trash"></i>Delete</a>
+                        </td>
+                    </tr>
+            </tbody>
+        
+        </table>
+    </div>
+</div>

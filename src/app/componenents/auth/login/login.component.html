@@ -1,0 +1,78 @@
+<section class="pb-5 h-100">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img src=".\assets\images\login-logo.png"
+            class="img-fluid" alt="Sample image">
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <form [formGroup]="loginForm" (ngSubmit)="loginSubmitted()">
+            <div class="text-center">
+              <p class="h1 fw-normal mb-0 me-3">Welcome to <b style="color: #29bf12">Competency</b></p>
+            </div>
+  
+            <div class="divider d-flex align-items-center my-4">
+              <p class="text-center lead mx-3 mb-0">HRMDO</p>
+            </div>
+  
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <div class="m-100">
+                  <label class="col-3 form-label" for="form3Example3">First Name</label>
+                  <label class="col-9 error text-end" *ngIf="Username.errors?.['required'] && (Username.dirty)">
+                      Username is required
+                  </label>
+                  <label class="col-9 error text-end" *ngIf="Username.errors?.['minlength'] && (Username.dirty)">
+                      Username should be at least 6 characters
+                  </label>
+              </div>  
+              <input class="form-control form-control-lg" 
+                type="text"
+                id="username"
+                formControlName="username" 
+                maxlength="16" required
+                placeholder="Enter username" />
+            </div>
+  
+            <!-- Password input -->
+            <div class="form-outline mb-3">
+              <div class="m-100">
+                  <label class="col-3 form-label" for="form3Example3">Password</label>
+                  <label class="col-9 error text-end" *ngIf="Password.errors?.['required'] && (Password.dirty)">
+                      Password is required!
+                  </label>
+                  <label class="col-9 error text-end" *ngIf="Password.errors?.['minlength'] && (Password.dirty)">
+                      Password should be at least 6 characters!
+                  </label>
+              </div>
+              <input class="form-control form-control-lg" 
+                type="password" 
+                id="password" 
+                formControlName="password" 
+                maxlength="16" required
+                placeholder="Enter password" />
+            </div>
+  
+            <div class="d-flex justify-content-between align-items-center">
+              <!-- Checkbox -->
+              <div class="form-check mb-0">
+                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                <label class="form-check-label" for="form2Example3">
+                  Remember me
+                </label>
+              </div>
+              <a (click)="navigateToForgot()" class=" forgot">Forgot password?</a>
+            </div>
+  
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="submit" class="btn btn-success btn-lg w-100" [disabled]="loginForm.invalid"
+                style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+              <p class="text-center small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a (click)="navigateToRegister()"
+                  class="register">Register</a></p>
+            </div>
+  
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>

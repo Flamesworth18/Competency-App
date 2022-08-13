@@ -1,0 +1,122 @@
+<div class="container py-5 h-100 row d-flex justify-content-center mx-auto">
+
+    <div class="col-xl-7">
+
+        <!-- title -->
+        <div class="shadow card mx-auto">
+            <div class="card-header bg-success text-light h3">
+                Research Competency 4
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Exhibiting professionalism in research</h5>
+                <span class="pre pt-2 ps-2" style="font-size: 13px">
+                    4.1 Developing social skills and an inclusive environment as a member of a research team or among different teams through effective and respectful interaction with diverse students, employees,
+                    peers, and supervisors.
+                </span>
+                <span class="pre ps-2" style="font-size: 13px">
+                    4.2 Connecting as an employee or representative of an institution by developing advocacy skills with and seeking assistance from senior management or administration (at the institution, across
+                    institutions, or with funding stakeholders).
+                </span>
+                <span class="pre ps-2" style="font-size: 13px">
+                    4.3 Engaging colleagues, collaborators, and experts as a citizen to scholarship to maintain the intellectual integrity of the discipline and the profession.
+                </span>
+                <span class="pre ps-2" style="font-size: 13px">
+                    4.4 Bearing responsibility for the universal perception of the profession and his/her contribution towards social justice or improvement as a representative of the community.
+                </span>
+            </div>
+        </div>
+
+        <!-- basic -->
+        <div class="shadow card mt-3 mx-auto ">
+            <div class="card-body">
+                <h5 class="card-title pb-3">
+                    <span class="h5 me-1">Basic</span> 
+                    <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                </h5>
+                <div class="form-check pb-3" *ngFor="let option of userResearchCompetency.fourBasicOptions">
+                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" (change)="addToBasicOptionList($event, option)" id="option1">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        {{ option.label }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- intermediate -->
+        <div class="shadow card mt-3 mx-auto ">
+            <div class="card-body">
+                <h5 class="card-title pb-3">
+                    <span class="h5 me-1">Intermediate</span> 
+                    <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                </h5>
+                <div class="form-check pb-3" *ngFor="let option of userResearchCompetency.fourIntermediateOptions">
+                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" (change)="addToIntermediateOptionList($event, option)" id="option1">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        {{ option.label }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- advanced -->
+        <div class="shadow card mt-3 mx-auto ">
+            <div class="card-body">
+                <h5 class="card-title pb-3">
+                    <span class="h5 me-1">Advanced</span> 
+                    <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                </h5>
+                <div class="form-check pb-3" *ngFor="let option of userResearchCompetency.fourAdvancedOptions">
+                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" (change)="addToAdvancedOptionList($event, option)" id="option1">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        {{ option.label }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Superior -->
+        <div class="shadow card mt-3 mx-auto ">
+            <div class="card-body">
+                <h5 class="card-title pb-3">
+                    <span class="h5 me-1">Superior</span> 
+                    <i class="fa-solid fa-asterisk text-danger align-middle pb-3" style="font-size:9px"></i>
+                </h5>
+                <div class="form-check pb-3" *ngFor="let option of userResearchCompetency.fourSuperiorOptions">
+                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" (change)="addToSuperiorOptionList($event, option)" id="option1">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        {{ option.label }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- pagination -->
+        <div class="mt-5 mx-auto">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li *ngFor="let route of researchCompetencyRoutes; let i = index" [ngClass]="isPageActive(route.routeLink)?'active':''" class="page-item">
+                        <a class="page-link" (click)="navigateToPagination(route.routeLink )">{{ i + 1 }}</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        
+    </div>
+
+    <div class="col-xl-2">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+              Competencies
+            </div>
+            <ul class="list-group list-group-flush" *ngFor="let competency of competencies">
+              <li class="list-group-item" [ngClass]="competency.name === currentCompetency? 'active':''" 
+              (click)="confirmNavigate(competency.name)">
+                {{ competency.name }}
+              </li>
+            </ul>
+        </div>
+
+        <button type="button" (click)="navigateToTakenAssessments()" class="shadow btn btn-outline-success w-100 mt-3">My Assessments</button>
+    </div>
+
+</div>

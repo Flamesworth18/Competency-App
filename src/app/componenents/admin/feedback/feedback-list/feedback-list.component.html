@@ -1,0 +1,51 @@
+<div class="h-100 container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-success">Feedback List</h2>
+		</div>
+	</div>
+    <br /><br />
+
+    <div class="table-responsive">
+        <table class="table table-hover table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Message
+                    </th>
+                    <th>
+                        Date Created
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody *ngIf="!(loader._isLoading | async)">
+                    <tr *ngFor="let feedback of feedbacks">
+                        <td width="25%">
+                            {{ feedback.name }} 
+                        </td>
+                        <td width="25%">
+                            {{ feedback.emailAddress }}
+                        </td>
+                        <td width="50%">
+                            {{ feedback.message }}
+                        </td>
+                        <td width="20%">
+                            {{ feedback.dateCreated }}
+                        </td>
+                        <td width="30%">
+                            <a class="btn btn-danger" (click)="confirmDelete(feedback.id)"> <i class="fa-solid fa-trash"></i>Delete</a>
+                        </td>
+                    </tr>
+            </tbody>
+        
+        </table>
+    </div>
+</div>

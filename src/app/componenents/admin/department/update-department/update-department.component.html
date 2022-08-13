@@ -1,0 +1,34 @@
+<div class="h-100 container">
+    <form [formGroup]="updateDepartmentForm" (ngSubmit)="updateDepartment()">
+        <div class="border p-3">
+            <div class="row pb-2">
+                <h2 class="text-success">Update Department</h2>
+                <hr />
+            </div>
+            <div class="mb-3">
+                <label>Name</label>
+                <input class="form-control" id="name" type="text" formControlName="name" placeholder="Enter department name" maxlength="16" [(ngModel)]="tempDep.name" required/>
+                <span class="text-danger"></span>
+            </div>
+            <label>Add Colleges</label>
+            <div class="input-group mb-3">
+                <input [(ngModel)]="college" id="college" formControlName="college" type="text" class="form-control" placeholder="Enter department's colleges" aria-label="Enter department's colleges" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="button" (click)="addCollege()">Add</button>
+                </div>
+            </div>
+            <div class="form-control mb-3" aria-label=".form-control example">
+                <div>Colleges</div>
+                <div *ngFor="let college of tempDep.colleges" class="d-flex align-items-center">
+                    <input (keyup)="getCollegeId(college.id)" (change)="selectedCollege($any($event).target.value)" class="form-control mt-2" value="{{ college.name }}" type="text" required/>
+                    <a class="btn btn-danger form-control mt-2 w-25" (click)="removeCollegeFromList(college)"> <i class="fa-solid fa-trash"></i>Delete</a>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-success" style="width:150px">Save</button>
+            <a (click)="navigateToDepartmentList()" class="btn btn-secondary mx-1" style="width:150px">
+                Back to List
+            </a>
+        </div>
+    </form>
+</div>

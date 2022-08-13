@@ -1,0 +1,1100 @@
+<ngx-spinner *ngIf="!showTables"
+    bdOpactiy = 0.9
+    bdColor = ""
+    size = "default"
+    color = "green"
+    type = "ball-pulse-sync"
+    [fullScreen] = "false"
+    class="vh-100 d-flex align-items-center justify-content-center"
+>
+    <span class="text-success lead">Loading</span>
+</ngx-spinner>
+
+<div *ngIf="showTables" class="container-fluid mb-5 h-100 bg-light">
+
+    <div class="pt-4 mx-3 d-flex justify-content-between">
+        <button (click)="back()" type="button" class="btn btn-outline-secondary">Back</button>
+        <button type="button" 
+        class="ms-3 btn btn-success"
+        printSectionId="section"
+        ngxPrint
+        [useExistingCss]="true"
+        styleSheetFile="assets/css/style.scss">
+            Print
+        </button>
+    </div>
+
+    <div class="px-5" id="section">
+        <div class="text-center mt-3">
+            <div class="h3">
+                University of Southern Mindanao
+            </div>
+            <div class="lead h4">
+                FACULTY COMPETENCY ASSESSMENT SELF-ASSESSMENT FORM
+            </div>
+        </div>
+
+        <div class="input-group input-group-lg pt-3">
+            <span class="input-group-text fw-bolder" id="inputGroup-sizing-lg" style="width:160px">
+                Name
+            </span>
+            <input type="text" 
+            class="form-control" 
+            aria-label="Sizing example input" 
+            aria-describedby="inputGroup-sizing-lg"
+            readonly
+            style="text-transform:capitalize;"
+            [(ngModel)]="competency.employeeName">
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-text fw-bolder" id="inputGroup-sizing-lg" style="width:160px">
+                Department
+            </span>
+            <input type="text" 
+            class="form-control" 
+            aria-label="Sizing example input" 
+            aria-describedby="inputGroup-sizing-lg"
+            readonly
+            [(ngModel)]="competency.department">
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-text fw-bolder" id="inputGroup-sizing-lg" style="width:160px">
+                College
+            </span>
+            <input type="text" 
+            class="form-control border" 
+            aria-label="Sizing example input" 
+            aria-describedby="inputGroup-sizing-lg"
+            readonly
+            [(ngModel)]="competency.college">
+        </div>
+
+        <div class="h4 mt-3">
+            Instructions:
+        </div>
+        <p class="text-muted p" style="text-align: justify;">
+            On this Competency Assessment Booklet, you will find the Competency Standards of the Faculty Members of the University of Southern Mindanao. As a
+            faculty member, you will be assessed on the six (6) competency clusters: Core, Leadership, Instruction, Research, Extension, and Production. You are to
+            assess your level of competency according to BIAS assessment: Basic, Intermediate, Advanced, and Superior. Read carefully the behavioral indicators
+            described in the BIAS matrix. Assess yourself which level your current competencies are. On the self-assessment page, please indicate your
+            competency. After ascertaining your competency level, please describe an event where you have demonstrated your competencies (2016-2020 period).
+            Please indicate also when the event happened. We suggest you follow the STAR guideline in responding to the essay on evidence: Describe a
+            SITUATION where you needed to demonstrate the competency. In what capacity or what TASKS you performed it? What were your ACTIONS? What
+            were the RESULTS? This form should be printed and sent to HRMDO.
+        </p>
+
+        <div class="h5 mt-3">
+            Leadership Competency 1
+        </div>
+        <div class="h6">
+            Thinking Strategically and Creatively
+        </div>
+        <p class="text-muted p">
+            1.1 The ability to “see the big picture”, think multi-dimensionally, craft Innovative solutions, Identify connections between situations or things that are not obviously related. <br>
+            1.2 Come up with new ideas and different ways to enhance organizational effectiveness and responsiveness.
+        </p>
+
+        <div class="table-responsive mt-3">
+            <table class="table table-fixed border">
+
+                <tbody>
+                    
+                    <tr>
+                        <th scope="col">Basic</th>
+                        <th scope="col">Intermediate</th>
+                        <th scope="col">Advanced</th>
+                        <th scope="col">Superior</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div *ngFor="let option of competency.oneBasicOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngFor="let option of competency.oneIntermediateOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngFor="let option of competency.oneAdvancedOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngFor="let option of competency.oneSuperiorOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+              
+            </table>
+        </div>
+
+        <div class="table-responsive mt-3">
+            <table class="table-bordered">
+                <tbody>
+                    <tr class="c" style="background:#E0E0E0">
+                        <th scope="col" colspan="2" class="p-3">
+                            <span class="h4">
+                                Leadership Competency 1
+                            </span>
+                            <br>
+                            <span class="lead">
+                                Thinking Strategically and Creatively
+                            </span>
+                        </th>
+                    </tr>
+                    <tr class="c" style="background:#E0E0E0">
+                        <td class="p-2"
+                        style="text-transform:capitalize;">
+                            <b>Name: </b> {{ competency.employeeName }}
+                        </td>
+                        <td class="p-2">
+                            <span class="lead">
+                                Narrative Exposition of Evidence
+                            </span>
+                            <span class="text-muted">
+                                (Cite a behavioral indicator. Recall and narrate an event that you demonstrated this behavioral indicator. Please use the STAR guideline in
+                                drafting your essay. )
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2" style="width: 450px;">
+                            <b>Self-Assessment</b> <span class="text-muted">
+                                ( Please select the level of
+                                your competency based on the behavioral
+                                description above)
+                            </span>
+                        </td>
+                        <td rowspan="4" class="p-2 align-top">
+                            {{ competency.oneEssay }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2">
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Basic: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.oneBasicResult.notYet" class="form-check-input" type="radio" name="basic" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.oneBasicResult.partially" class="form-check-input" type="radio" name="basic" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.oneBasicResult.competent" class="form-check-input" type="radio" name="basic" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Intermediate: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.oneIntermediateResult.notYet" class="form-check-input" type="radio" name="intermediate" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.oneIntermediateResult.partially" class="form-check-input" type="radio" name="intermediate" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.oneIntermediateResult.competent" class="form-check-input" type="radio" name="intermediate" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Advanced: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.oneAdvancedResult.notYet" class="form-check-input" type="radio" name="advanced" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.oneAdvancedResult.partially" class="form-check-input" type="radio" name="advanced" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.oneAdvancedResult.competent" class="form-check-input" type="radio" name="advanced" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Superior: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.oneSuperiorResult.notYet" class="form-check-input" type="radio" name="superior" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.oneSuperiorResult.partially" class="form-check-input" type="radio" name="superior" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.oneSuperiorResult.competent" class="form-check-input" type="radio" name="superior" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2">
+                            <b>Month and Year the event took place</b> 
+                            <span class="text-muted">
+                                (Please
+                                articulate below when the event happened by
+                                stating WHEN the said behavior indicators
+                                were demonstrated; month and Year, to be
+                                cross-referenced with DTR or IPCR entries):
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2">
+                            Signature: 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="h5 mt-3">
+            Leadership Competency 2
+        </div>
+        <div class="h6">
+            Leading Change
+        </div>
+        <p class="text-muted p">
+            2.1 The ability to generate genuine enthusiasm and momentum for organisational change. <br>
+            2.2 Engaging and enabling groups to understand, accept and commit to the change agenda. <br>
+            2.3 Advancing and sustaining change.
+        </p>
+        
+        <div class="table-responsive mt-3">
+            <table class="table table-fixed border">
+
+                <tbody>
+                    
+                    <tr>
+                        <th scope="col">Basic</th>
+                        <th scope="col">Intermediate</th>
+                        <th scope="col">Advanced</th>
+                        <th scope="col">Superior</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div *ngFor="let option of competency.twoBasicOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngFor="let option of competency.twoIntermediateOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngFor="let option of competency.twoAdvancedOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngFor="let option of competency.twoSuperiorOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+              
+            </table>
+        </div>
+
+        <div class="table-responsive mt-3">
+            <table class="table-bordered">
+                <tbody>
+                    <tr class="c" style="background:#E0E0E0">
+                        <th scope="col" colspan="2" class="p-3">
+                            <span class="h4">
+                                Leadership Competency 2
+                            </span>
+                            <br>
+                            <span class="lead">
+                                Leading Change
+                            </span>
+                        </th>
+                    </tr>
+                    <tr class="c" style="background:#E0E0E0">
+                        <td class="p-2"
+                        style="text-transform:capitalize;">
+                            <b>Name: </b> {{ competency.employeeName }}
+                        </td>
+                        <td class="p-2">
+                            <span class="lead">
+                                Narrative Exposition of Evidence
+                            </span>
+                            <span class="text-muted">
+                                (Cite a behavioral indicator. Recall and narrate an event that you demonstrated this behavioral indicator. Please use the STAR guideline in
+                                drafting your essay. )
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2" style="width: 450px;">
+                            <b>Self-Assessment</b> <span class="text-muted">
+                                ( Please select the level of
+                                your competency based on the behavioral
+                                description above)
+                            </span>
+                        </td>
+                        <td rowspan="4" class="p-2 align-top">
+                            {{ competency.twoEssay }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2">
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Basic: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.twoBasicResult.notYet" class="form-check-input" type="radio" name="basic2" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.twoBasicResult.partially" class="form-check-input" type="radio" name="basic2" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.twoBasicResult.competent" class="form-check-input" type="radio" name="basic2" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Intermediate: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.twoIntermediateResult.notYet" class="form-check-input" type="radio" name="intermediate2" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.twoIntermediateResult.partially" class="form-check-input" type="radio" name="intermediate2" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.twoIntermediateResult.competent" class="form-check-input" type="radio" name="intermediate2" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Advanced: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.twoAdvancedResult.notYet" class="form-check-input" type="radio" name="advanced2" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.twoAdvancedResult.partially" class="form-check-input" type="radio" name="advanced2" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.twoAdvancedResult.competent" class="form-check-input" type="radio" name="advanced2" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Superior: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.twoSuperiorResult.notYet" class="form-check-input" type="radio" name="superior2" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.twoSuperiorResult.partially" class="form-check-input" type="radio" name="superior2" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.twoSuperiorResult.competent" class="form-check-input" type="radio" name="superior2" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2">
+                            <b>Month and Year the event took place</b> 
+                            <span class="text-muted">
+                                (Please
+                                articulate below when the event happened by
+                                stating WHEN the said behavior indicators
+                                were demonstrated; month and Year, to be
+                                cross-referenced with DTR or IPCR entries):
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2">
+                            Signature: 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="h5 mt-3">
+            Leadership Competency 3
+        </div>
+        <div class="h6">
+            Building Collaborative, Inclusive Working Relationship
+        </div>
+        <p class="text-muted p">
+            3.1 The ability to build and maintain a network of reciprocal, high trust, synergistic working relationships within the organisation and across government and relevant sectors. <br>
+            3.2 The ability to successfully leverage and maximise opportunities for strategic influencing within the organisation and with external stakeholders.
+        </p>
+                
+        <div class="table-responsive mt-3">
+            <table class="table table-fixed border">
+
+                <tbody>
+                    
+                    <tr>
+                        <th scope="col">Basic</th>
+                        <th scope="col">Intermediate</th>
+                        <th scope="col">Advanced</th>
+                        <th scope="col">Superior</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div *ngFor="let option of competency.threeBasicOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngFor="let option of competency.threeIntermediateOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngFor="let option of competency.threeAdvancedOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngFor="let option of competency.threeSuperiorOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+              
+            </table>
+        </div>
+
+        <div class="table-responsive mt-3">
+            <table class="table-bordered">
+                <tbody>
+                    <tr class="c" style="background:#E0E0E0">
+                        <th scope="col" colspan="2" class="p-3">
+                            <span class="h4">
+                                Leadership Competency 3
+                            </span>
+                            <br>
+                            <span class="lead">
+                                Building Collaborative, Inclusive Working Relationship
+                            </span>
+                        </th>
+                    </tr>
+                    <tr class="c" style="background:#E0E0E0">
+                        <td class="p-2"
+                        style="text-transform:capitalize;">
+                            <b>Name: </b> {{ competency.employeeName }}
+                        </td>
+                        <td class="p-2">
+                            <span class="lead">
+                                Narrative Exposition of Evidence
+                            </span>
+                            <span class="text-muted">
+                                (Cite a behavioral indicator. Recall and narrate an event that you demonstrated this behavioral indicator. Please use the STAR guideline in
+                                drafting your essay. )
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2" style="width: 450px;">
+                            <b>Self-Assessment</b> <span class="text-muted">
+                                ( Please select the level of
+                                your competency based on the behavioral
+                                description above)
+                            </span>
+                        </td>
+                        <td rowspan="4" class="p-2 align-top">
+                            {{ competency.threeEssay }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2">
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Basic: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.threeBasicResult.notYet" class="form-check-input" type="radio" name="basic3" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.threeBasicResult.partially" class="form-check-input" type="radio" name="basic3" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.threeBasicResult.competent" class="form-check-input" type="radio" name="basic3" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Intermediate: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.threeIntermediateResult.notYet" class="form-check-input" type="radio" name="intermediate3" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.threeIntermediateResult.partially" class="form-check-input" type="radio" name="intermediate3" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.threeIntermediateResult.competent" class="form-check-input" type="radio" name="intermediate3" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Advanced: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.threeAdvancedResult.notYet" class="form-check-input" type="radio" name="advanced3" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.threeAdvancedResult.partially" class="form-check-input" type="radio" name="advanced3" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.threeAdvancedResult.competent" class="form-check-input" type="radio" name="advanced3" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Superior: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.threeSuperiorResult.notYet" class="form-check-input" type="radio" name="superior3" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.threeSuperiorResult.partially" class="form-check-input" type="radio" name="superior3" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.threeSuperiorResult.competent" class="form-check-input" type="radio" name="superior3" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2">
+                            <b>Month and Year the event took place</b> 
+                            <span class="text-muted">
+                                (Please
+                                articulate below when the event happened by
+                                stating WHEN the said behavior indicators
+                                were demonstrated; month and Year, to be
+                                cross-referenced with DTR or IPCR entries):
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2">
+                            Signature: 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="h5 mt-3">
+            Leadership Competency 4
+        </div>
+        <div class="h6">
+            Managing Performance and Coaching for Results
+        </div>
+        <p class="text-muted p">
+            4.1 The ability to create an enabling environment which will nurture and sustain a performance-based, coaching culture. <br>
+            4.2 Strong focus on developing people for current and future needs, managing talent, promoting the value of continuous learning and improvement.
+        </p>
+        
+        <div class="table-responsive mt-3">
+            <table class="table table-fixed border">
+
+                <tbody>
+                    
+                    <tr>
+                        <th scope="col">Basic</th>
+                        <th scope="col">Intermediate</th>
+                        <th scope="col">Advanced</th>
+                        <th scope="col">Superior</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div *ngFor="let option of competency.fourBasicOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngFor="let option of competency.fourIntermediateOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngFor="let option of competency.fourAdvancedOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngFor="let option of competency.fourSuperiorOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+              
+            </table>
+        </div>
+
+        <div class="table-responsive mt-3">
+            <table class="table-bordered">
+                <tbody>
+                    <tr class="c" style="background:#E0E0E0">
+                        <th scope="col" colspan="2" class="p-3">
+                            <span class="h4">
+                                Leadership Competency 4
+                            </span>
+                            <br>
+                            <span class="lead">
+                                Managing Performance and Coaching for Results
+                            </span>
+                        </th>
+                    </tr>
+                    <tr class="c" style="background:#E0E0E0">
+                        <td class="p-2"
+                        style="text-transform:capitalize;">
+                            <b>Name: </b> {{ competency.employeeName }}
+                        </td>
+                        <td class="p-2">
+                            <span class="lead">
+                                Narrative Exposition of Evidence
+                            </span>
+                            <span class="text-muted">
+                                (Cite a behavioral indicator. Recall and narrate an event that you demonstrated this behavioral indicator. Please use the STAR guideline in
+                                drafting your essay. )
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2" style="width: 450px;">
+                            <b>Self-Assessment</b> <span class="text-muted">
+                                ( Please select the level of
+                                your competency based on the behavioral
+                                description above)
+                            </span>
+                        </td>
+                        <td rowspan="4" class="p-2 align-top">
+                            {{ competency.fourEssay }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2">
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Basic: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fourBasicResult.notYet" class="form-check-input" type="radio" name="basic4" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fourBasicResult.partially" class="form-check-input" type="radio" name="basic4" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fourBasicResult.competent" class="form-check-input" type="radio" name="basic4" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Intermediate: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fourIntermediateResult.notYet" class="form-check-input" type="radio" name="intermediate4" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fourIntermediateResult.partially" class="form-check-input" type="radio" name="intermediate4" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fourIntermediateResult.competent" class="form-check-input" type="radio" name="intermediate4" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Advanced: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fourAdvancedResult.notYet" class="form-check-input" type="radio" name="advanced4" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fourAdvancedResult.partially" class="form-check-input" type="radio" name="advanced4" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fourAdvancedResult.competent" class="form-check-input" type="radio" name="advanced4" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Superior: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fourSuperiorResult.notYet" class="form-check-input" type="radio" name="superior4" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fourSuperiorResult.partially" class="form-check-input" type="radio" name="superior4" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fourSuperiorResult.competent" class="form-check-input" type="radio" name="superior4" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2">
+                            <b>Month and Year the event took place</b> 
+                            <span class="text-muted">
+                                (Please
+                                articulate below when the event happened by
+                                stating WHEN the said behavior indicators
+                                were demonstrated; month and Year, to be
+                                cross-referenced with DTR or IPCR entries):
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2">
+                            Signature: 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="h5 mt-3">
+            Leadership Competency 5
+        </div>
+        <div class="h6">
+            Creating and Nurturing a High Performing Organization
+        </div>
+        <p class="text-muted p">
+            5.1 The ability to create a high performing organizational culture that Is purpose-driven, results-based, client-focused and team-oriented.
+        </p>
+                
+        <div class="table-responsive mt-3">
+            <table class="table table-fixed border">
+
+                <tbody>
+                    
+                    <tr>
+                        <th scope="col">Basic</th>
+                        <th scope="col">Intermediate</th>
+                        <th scope="col">Advanced</th>
+                        <th scope="col">Superior</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div *ngFor="let option of competency.fiveBasicOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngFor="let option of competency.fiveIntermediateOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngFor="let option of competency.fiveAdvancedOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngFor="let option of competency.fiveSuperiorOptions" class="d-flex flex-column">
+                                <div class="form-check py-2 h">
+                                    <input [(ngModel)]="option.isChecked" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="return false;" onkeydown="return false;">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ option.label }}
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+              
+            </table>
+        </div>
+
+        <div class="table-responsive mt-3">
+            <table class="table-bordered">
+                <tbody>
+                    <tr class="c" style="background:#E0E0E0">
+                        <th scope="col" colspan="2" class="p-3">
+                            <span class="h4">
+                                Leadership Competency 5
+                            </span>
+                            <br>
+                            <span class="lead">
+                                Creating and Nurturing a High Performing Organization
+                            </span>
+                        </th>
+                    </tr>
+                    <tr class="c" style="background:#E0E0E0">
+                        <td class="p-2"
+                        style="text-transform:capitalize;">
+                            <b>Name: </b> {{ competency.employeeName }}
+                        </td>
+                        <td class="p-2">
+                            <span class="lead">
+                                Narrative Exposition of Evidence
+                            </span>
+                            <span class="text-muted">
+                                (Cite a behavioral indicator. Recall and narrate an event that you demonstrated this behavioral indicator. Please use the STAR guideline in
+                                drafting your essay. )
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2" style="width: 450px;">
+                            <b>Self-Assessment</b> <span class="text-muted">
+                                ( Please select the level of
+                                your competency based on the behavioral
+                                description above)
+                            </span>
+                        </td>
+                        <td rowspan="4" class="p-2 align-top">
+                            {{ competency.fiveEssay }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2">
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Basic: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fiveBasicResult.notYet" class="form-check-input" type="radio" name="basic5" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fiveBasicResult.partially" class="form-check-input" type="radio" name="basic5" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fiveBasicResult.competent" class="form-check-input" type="radio" name="basic5" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Intermediate: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fiveIntermediateResult.notYet" class="form-check-input" type="radio" name="intermediate5" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fiveIntermediateResult.partially" class="form-check-input" type="radio" name="intermediate5" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fiveIntermediateResult.competent" class="form-check-input" type="radio" name="intermediate5" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Advanced: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fiveAdvancedResult.notYet" class="form-check-input" type="radio" name="advanced5" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fiveAdvancedResult.partially" class="form-check-input" type="radio" name="advanced5" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fiveAdvancedResult.competent" class="form-check-input" type="radio" name="advanced5" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 d-flex">
+                                <div class="me-2">Superior: </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fiveSuperiorResult.notYet" class="form-check-input" type="radio" name="superior5" id="1" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio1">Not yet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fiveSuperiorResult.partially" class="form-check-input" type="radio" name="superior5" id="2" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio2">Partially</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [checked]="competency.fiveSuperiorResult.competent" class="form-check-input" type="radio" name="superior5" id="3" onclick="return false;" onkeydown="return false;">
+                                        <label class="form-check-label" for="inlineRadio3">Competent</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2">
+                            <b>Month and Year the event took place</b> 
+                            <span class="text-muted">
+                                (Please
+                                articulate below when the event happened by
+                                stating WHEN the said behavior indicators
+                                were demonstrated; month and Year, to be
+                                cross-referenced with DTR or IPCR entries):
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2">
+                            Signature: 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+</div>
